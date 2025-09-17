@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1f10d6279e54040a58b629990dbb3e, type: 3}
+  m_Name: BuildingConfigurationProvider
+  m_EditorClassIdentifier: Assembly-CSharp::CityBuilder.Infrastructure.Services.BuildingConfigurationProvider
+  _buildingTypes:
+  - {fileID: 11400000, guid: b58909c4165b91444b568607afcae6cd, type: 2}
+  - {fileID: 11400000, guid: ce292e8ebc7aa8f4bab786dee09b2e5e, type: 2}
+  - {fileID: 11400000, guid: 90e2cecdc1357684ca3b001a67c0fdce, type: 2}

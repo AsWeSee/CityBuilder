@@ -1,0 +1,16 @@
+{
+    "name": "Application.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:56b78255933ba6c48a99226b7612e449"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

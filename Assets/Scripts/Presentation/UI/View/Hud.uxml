@@ -1,0 +1,23 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/Presentation/View/HudStyle.uss?fileID=7433441132597879392&amp;guid=a83a6ddf0fa5db841854606fabcf1496&amp;type=3#HudStyle" />
+    <ui:VisualElement name="ResourcePanel" style="flex-grow: 1; top: auto; left: auto; right: 0; bottom: 0; align-items: flex-end; justify-content: center; align-self: flex-end; align-content: flex-end; flex-direction: row; position: absolute;">
+        <ui:Label text="0" name="gold-label">
+            <ui:Label text="Золото" style="bottom: -20px; align-items: stretch; justify-content: flex-start; align-self: auto; align-content: flex-start; flex-basis: auto;" />
+        </ui:Label>
+        <ui:Label text="0" name="wood-label">
+            <ui:Label text="Дерево" style="bottom: -20px;" />
+        </ui:Label>
+        <ui:Label text="0" name="stone-label">
+            <ui:Label text="Камень" style="bottom: -20px;" />
+        </ui:Label>
+        <ui:Label text="0" name="grain-label">
+            <ui:Label text="Зерно" style="bottom: -20px;" />
+        </ui:Label>
+    </ui:VisualElement>
+    <ui:VisualElement name="ResourcePanel" style="flex-grow: 1; top: auto; left: auto; right: 0; bottom: 40px; align-items: flex-end; justify-content: center; align-self: flex-end; align-content: flex-end; flex-direction: row; position: absolute;" />
+    <ui:VisualElement name="BuldingSelectionPanel" style="flex-grow: 1; top: auto; left: 0; right: auto; bottom: 0; align-items: flex-end; justify-content: center; align-self: flex-start; align-content: flex-start; flex-direction: row; position: absolute;">
+        <ui:Button text="Дом" name="house-button" style="width: auto;" />
+        <ui:Button text="Ферма" name="farm-button" />
+        <ui:Button text="Шахта" name="mine-button" />
+    </ui:VisualElement>
+</ui:UXML>

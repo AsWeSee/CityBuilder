@@ -1,0 +1,15 @@
+
+/* HudStyles.uss */
+#ResourcePanel {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+.unity-label {
+    color: white;
+    margin-left: 15px;
+    font-size: 16px;
+}
+#BuildingSelectionPanel Button {
+    padding: 10px 20px;
+    margin-right: 10px;
+}
