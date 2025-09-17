@@ -30,16 +30,16 @@ namespace CityBuilder.Presentation.UI.View
 
             // this._buildingNameLabel.text = buildingName;
             
-            this._productionList.Clear(); // Очищаем старые данные
-            if (production != null)
-            {
-                foreach (KeyValuePair<ResourceType, int> res in production)
-                {
-                    // Динамически создаем Label для каждой строки
-                    Label lineLabel = new Label($"{res.Key}: +{res.Value}/tick");
-                    this._productionList.Add(lineLabel);
-                }
-            }
+            // this._productionList.Clear(); // Очищаем старые данные
+            // if (production != null)
+            // {
+            //     foreach (KeyValuePair<ResourceType, int> res in production)
+            //     {
+            //         // Динамически создаем Label для каждой строки
+            //         Label lineLabel = new Label($"{res.Key}: +{res.Value}/tick");
+            //         this._productionList.Add(lineLabel);
+            //     }
+            // }
         }
 
         public void Hide()

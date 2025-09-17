@@ -20,7 +20,7 @@ namespace CityBuilder.Application.UseCases
 
         public void Initialize()
         {
-            this._disposable = this._subscriber.Subscribe(_ => HandleRotationRequest());
+            this._disposable = this._subscriber.Subscribe(_ => this.HandleRotationRequest());
         }
 
         private void HandleRotationRequest()

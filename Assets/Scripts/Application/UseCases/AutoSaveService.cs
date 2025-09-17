@@ -7,7 +7,7 @@ using CityBuilder.Domain.MessageDTO;
 
 public class AutoSaveService : IInitializable, IDisposable
 {
-    private const float AUTOSAVE_INTERVAL_SECONDS = 60.0f;
+    private const float _aUTOSAVE_INTERVAL_SECONDS = 60.0f;
     
     private readonly IPublisher<SaveGameRequestDTO> _saveRequestPublisher;
     private readonly CancellationTokenSource _cancellation = new();
@@ -26,7 +26,7 @@ public class AutoSaveService : IInitializable, IDisposable
     {
         while (!token.IsCancellationRequested)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(AUTOSAVE_INTERVAL_SECONDS), cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(_aUTOSAVE_INTERVAL_SECONDS), cancellationToken: token);
             
             // Мы не сохраняем напрямую, а просто просим систему сохраниться.
             // Это позволяет повторно использовать логику SaveGameUseCase.

@@ -4,31 +4,33 @@ using System;
 using CityBuilder.Domain.Models;
 using CityBuilder.Domain.MessageDTO;
 using CityBuilder.Repositories;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace CityBuilder.Application.UseCases
 {
     public class DeleteBuildingUseCase : IInitializable, IDisposable
     {
-        private const float REFUND_PERCENTAGE = 0.5f; // 50%
+        private const float _refund_percentage = 0.5f; // 50%
 
         private readonly SelectionModel _selectionModel;
         private readonly GridModel _gridModel;
-        private readonly ResourcesModel _resourcesModel;
+        private readonly PlayerResourcesModel _resourcesModel;
         private readonly BuildingConfigurationProvider _configProvider;
         
         private readonly ISubscriber<DeleteSelectedBuildingRequestDTO> _deleteSubscriber;
         private readonly IPublisher<BuildingDeletedEventDTO> _deletedPublisher;
-        private readonly IPublisher<ResourcesUpdatedEventDTO> _resourcesUpdatedPublisher;
+        private readonly IPublisher<Infrastructure.MessagesDTO.ResourcesUpdatedEventDTO> _resourcesUpdatedPublisher;
         private IDisposable _disposable;
 
         public DeleteBuildingUseCase(
             SelectionModel selectionModel,
             GridModel gridModel,
-            ResourcesModel resourcesModel,
+            PlayerResourcesModel resourcesModel,
             BuildingConfigurationProvider configProvider,
             ISubscriber<DeleteSelectedBuildingRequestDTO> deleteSubscriber,
             IPublisher<BuildingDeletedEventDTO> deletedPublisher,
-            IPublisher<ResourcesUpdatedEventDTO> resourcesUpdatedPublisher
+            IPublisher<Infrastructure.MessagesDTO.ResourcesUpdatedEventDTO> resourcesUpdatedPublisher
         ) {
             this._selectionModel = selectionModel;
             this._gridModel = gridModel;
@@ -41,32 +43,32 @@ namespace CityBuilder.Application.UseCases
 
         public void Initialize()
         {
-            this._disposable = this._deleteSubscriber.Subscribe(_ => HandleDeleteRequest());
+            this._disposable = this._deleteSubscriber.Subscribe(_ => this.HandleDeleteRequest());
         }
 
         private void HandleDeleteRequest()
         {
-            if (!this._selectionModel.SelectedBuildingId.Value.HasValue) return;
+            if (!this._selectionModel.SelectedBuildingPosition.Value.HasValue) { return; }
 
-            int buildingId = this._selectionModel.SelectedBuildingId.Value.Value;
-            var buildingToRemove = this._gridModel.RemoveBuilding(buildingId);
+            Vector2Int buildingPosition = this._selectionModel.SelectedBuildingPosition.Value.Value;
+            BuildingInstanceModel buildingToRemove = this._gridModel.RemoveBuilding(buildingPosition);
 
             if (buildingToRemove != null)
             {
                 // Возвращаем часть стоимости постройки
-                var config = this._configProvider.GetBuildingTypeById(buildingToRemove.TypeId);
-                var buildCost = config?.GetLevelData(1)?.BuildCost;
+                BuildingTypeConfig config = this._configProvider.GetBuildingConfigByType(buildingToRemove.Type);
+                IReadOnlyDictionary<ResourceType, int> buildCost = config?.GetBuildCost();
                 if (buildCost != null)
                 {
-                    foreach (var resource in buildCost)
+                    foreach (KeyValuePair<ResourceType, int> resource in buildCost)
                     {
-                        int refundAmount = (int)(resource.Value * REFUND_PERCENTAGE);
+                        int refundAmount = (int)(resource.Value * _refund_percentage);
                         if (refundAmount > 0)
                         {
                             this._resourcesModel.Add(resource.Key, refundAmount);
-                            _resourcesUpdatedPublisher.Publish(new ResourcesUpdatedEventDTO
+                            this._resourcesUpdatedPublisher.Publish(new Infrastructure.MessagesDTO.ResourcesUpdatedEventDTO
                             {
-                                Type = resource.Key,
+                                ResourceType = resource.Key,
                                 NewAmount = this._resourcesModel.GetAmount(resource.Key)
                             });
                         }
@@ -74,9 +76,9 @@ namespace CityBuilder.Application.UseCases
                 }
 
                 // Снимаем выделение
-                this._selectionModel.SelectedBuildingId.Value = null;
+                this._selectionModel.SelectedBuildingPosition.Value = null;
                 
-                this._deletedPublisher.Publish(new BuildingDeletedEventDTO { InstanceId = buildingId });
+                this._deletedPublisher.Publish(new BuildingDeletedEventDTO { InstanceId = buildingToRemove.InstanceId });
             }
         }
         
