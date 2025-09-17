@@ -1042,11 +1042,11 @@ MonoBehaviour:
   _cellFilledSpaceHighlightPrefab: {fileID: 8955374378494700995, guid: 6416f7c59785c844e894de1a1711563f, type: 3}
   _buildingPrefabs:
   - BuildingType: 0
-    Prefab: {fileID: 862640505734820495, guid: 4939379b2b8c5e84ba755e783d2f1ca2, type: 3}
+    Prefab: {fileID: 862640505734820495, guid: d0734d5f096593f43a1e3e88e23f2226, type: 3}
   - BuildingType: 1
     Prefab: {fileID: 862640505734820495, guid: 4939379b2b8c5e84ba755e783d2f1ca2, type: 3}
   - BuildingType: 2
-    Prefab: {fileID: 862640505734820495, guid: 4939379b2b8c5e84ba755e783d2f1ca2, type: 3}
+    Prefab: {fileID: 862640505734820495, guid: b5fd952a334ada54f839bc46e88ce1d7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

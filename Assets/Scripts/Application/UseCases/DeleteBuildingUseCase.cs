@@ -48,6 +48,7 @@ namespace CityBuilder.Application.UseCases
 
         private void HandleDeleteRequest()
         {
+            Debug.Log("HandleDeleteRequest");
             if (!this._selectionModel.SelectedBuildingPosition.Value.HasValue) { return; }
 
             Vector2Int buildingPosition = this._selectionModel.SelectedBuildingPosition.Value.Value;

@@ -23,14 +23,32 @@ namespace CityBuilder.Presentation.UI.View
         private void Awake()
         {
             this._root = this.GetComponent<UIDocument>().rootVisualElement.Q("context-menu-root");
+            Debug.Log($"BuildingContextMenuView Awake - Root found: {this._root != null}");
 
-            this._root.Q<Button>("upgrade-button").clicked += () => OnUpgradeClicked?.Invoke();
+            Button upgradeButton = this._root.Q<Button>("upgrade-button");
+            Button moveButton = this._root.Q<Button>("move-button");
+            Button deleteButton = this._root.Q<Button>("delete-button");
+            
+            Debug.Log($"Buttons found - Upgrade: {upgradeButton != null}, Move: {moveButton != null}, Delete: {deleteButton != null}");
+
+            if (upgradeButton != null)
+                upgradeButton.clicked += () => OnUpgradeClicked?.Invoke();
+            
             this._upgradeInfo = this._root.Q<VisualElement>("upgrade-info");
             this._upgradeCostLabel = this._root.Q<Label>("upgrade-cost-label");
             this._nextLevelProductionList = this._root.Q<VisualElement>("next-level-production-list");
 
-            this._root.Q<Button>("move-button").clicked += () => OnMoveClicked?.Invoke();
-            this._root.Q<Button>("delete-button").clicked += () => OnDeleteClicked?.Invoke();
+            if (moveButton != null)
+                moveButton.clicked += () => OnMoveClicked?.Invoke();
+            
+            if (deleteButton != null)
+            {
+                deleteButton.clicked += () => 
+                {
+                    Debug.Log("Delete button clicked!");
+                    OnDeleteClicked?.Invoke();
+                };
+            }
 
             this.Hide(); // Скрываем меню по умолчанию
         }
