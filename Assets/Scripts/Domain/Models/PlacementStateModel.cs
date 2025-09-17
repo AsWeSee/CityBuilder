@@ -10,6 +10,16 @@ namespace CityBuilder.Domain.Models
         /// </summary>
         public BuildingType? SelectedBuildingType { get; set; }
 
+        /// <summary>
+        /// Текущий угол поворота для строящегося здания.
+        /// </summary>
+        public float PlacementRotationY { get; set; }
         public bool IsInPlacementMode => this.SelectedBuildingType.HasValue;
+        
+        public void Reset()
+        {
+            this.SelectedBuildingType = null;
+            this.PlacementRotationY = 0f;
+        }
     }
 }

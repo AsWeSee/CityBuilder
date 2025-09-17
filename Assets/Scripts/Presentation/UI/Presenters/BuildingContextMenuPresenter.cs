@@ -6,7 +6,6 @@ using R3;
 using CityBuilder.Domain.Models;
 using CityBuilder.Domain.MessageDTO;
 using CityBuilder.Presentation.UI.View;
-using CityBuilder.Domain.Models;
 using CityBuilder.Repositories;
 using System.Collections.Generic;
 
@@ -54,7 +53,11 @@ namespace CityBuilder.Presentation.UI.Presenters
             // 2. Реагируем на нажатия кнопок в View
             this._view.OnUpgradeClicked += () => this._upgradePublisher.Publish(new UpgradeSelectedBuildingRequestDTO());
             this._view.OnMoveClicked += () => this._movePublisher.Publish(new MoveSelectedBuildingRequestDTO());
-            this._view.OnDeleteClicked += () => this._deletePublisher.Publish(new DeleteSelectedBuildingRequestDTO());
+            this._view.OnDeleteClicked += () => 
+            {
+                Debug.Log("BuildingContextMenuPresenter: Delete button event received, publishing DeleteSelectedBuildingRequestDTO");
+                this._deletePublisher.Publish(new DeleteSelectedBuildingRequestDTO());
+            };
 
             this._disposables = bag.Build();
         }

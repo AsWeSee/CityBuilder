@@ -18,8 +18,8 @@ namespace CityBuilder.Presentation.UI.View
         private void Awake()
         {
             this._root = this.GetComponent<UIDocument>().rootVisualElement.Q("tooltip-root");
-            this. _buildingNameLabel = this._root.Q<Label>("building-name-label");
-            this._productionList = this._root.Q("production-list");
+            // this. _buildingNameLabel = this._root.Q<Label>("building-name-label");
+            // this._productionList = this._root.Q("production-list");
             this.Hide();
         }
 
@@ -28,18 +28,18 @@ namespace CityBuilder.Presentation.UI.View
             this._root.style.display = DisplayStyle.Flex;
             this.transform.position = worldPosition;
 
-            this._buildingNameLabel.text = buildingName;
+            // this._buildingNameLabel.text = buildingName;
             
-            this._productionList.Clear(); // Очищаем старые данные
-            if (production != null)
-            {
-                foreach (KeyValuePair<ResourceType, int> res in production)
-                {
-                    // Динамически создаем Label для каждой строки
-                    Label lineLabel = new Label($"{res.Key}: +{res.Value}/tick");
-                    this._productionList.Add(lineLabel);
-                }
-            }
+            // this._productionList.Clear(); // Очищаем старые данные
+            // if (production != null)
+            // {
+            //     foreach (KeyValuePair<ResourceType, int> res in production)
+            //     {
+            //         // Динамически создаем Label для каждой строки
+            //         Label lineLabel = new Label($"{res.Key}: +{res.Value}/tick");
+            //         this._productionList.Add(lineLabel);
+            //     }
+            // }
         }
 
         public void Hide()
