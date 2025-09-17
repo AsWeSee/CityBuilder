@@ -17,6 +17,7 @@ using CityBuilder.Presentation.UI.View;
 using CityBuilder.Presentation.UI.Presenters;
 using CityBuilder.Application.Services;
 using CityBuilder.ContractInterfaces;
+using CityBuilder.Application.UseCases;
 
 public class GameplayInstaller : LifetimeScope
 {
@@ -74,6 +75,9 @@ public class GameplayInstaller : LifetimeScope
         builder.RegisterMessageBroker<CameraControlDTO>(messagePipeOptions);
         builder.RegisterMessageBroker<DeleteSelectedBuildingRequestDTO>(messagePipeOptions);
         builder.RegisterMessageBroker<RotateBuildingRequestDTO>(messagePipeOptions);
+        builder.RegisterMessageBroker<BuildingUpgradedEventDTO>(messagePipeOptions);
+        builder.RegisterMessageBroker<BuildingDeletedEventDTO>(messagePipeOptions);
+        builder.RegisterMessageBroker<BuildingUpgradeFailedDTO>(messagePipeOptions);
 
         
         builder.RegisterMessageBroker<SaveGameRequestDTO>(messagePipeOptions);
@@ -90,6 +94,9 @@ public class GameplayInstaller : LifetimeScope
         builder.Register<PlaceBuildingUseCase>(Lifetime.Singleton).AsImplementedInterfaces();
         builder.Register<EnterPlacementModeUseCase>(Lifetime.Singleton).AsImplementedInterfaces();
 
+        builder.Register<RotateBuildingUseCase>(Lifetime.Singleton).AsImplementedInterfaces();
+        builder.Register<DeleteBuildingUseCase>(Lifetime.Singleton).AsImplementedInterfaces();
+        builder.Register<UpgradeBuildingUseCase>(Lifetime.Singleton).AsImplementedInterfaces();
         
         builder.Register<SelectBuildingUseCase>(Lifetime.Singleton).AsImplementedInterfaces();
 

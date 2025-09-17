@@ -28,7 +28,7 @@ namespace CityBuilder.Presentation.UI.View
             this._root.style.display = DisplayStyle.Flex;
             this.transform.position = worldPosition;
 
-            this._buildingNameLabel.text = buildingName;
+            // this._buildingNameLabel.text = buildingName;
             
             this._productionList.Clear(); // Очищаем старые данные
             if (production != null)

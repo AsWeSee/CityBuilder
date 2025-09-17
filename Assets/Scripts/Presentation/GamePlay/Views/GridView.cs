@@ -90,11 +90,11 @@ namespace CityBuilder.Presentation.GamePlay.Views
             }
         }
 
-        public void ShowGhost(Vector2Int gridPosition /*, float rotationY */)
+        public void ShowGhost(Vector2Int gridPosition, float rotationY)
         {
             this._ghostInstance.SetActive(true);
             this._ghostInstance.transform.position = this.GetWorldPosition(gridPosition);
-            // _ghostInstance.transform.rotation = Quaternion.Euler(0, rotationY, 0);
+            this._ghostInstance.transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
 
         public void HideGhost()

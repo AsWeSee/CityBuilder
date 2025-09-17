@@ -2,5 +2,4 @@
     <ui:VisualElement name="tooltip-root" style="flex-grow: 1; position: absolute;" />
     <ui:Label text="building-name-label" name="building-name-label" />
     <ui:VisualElement name="production-list" style="flex-grow: 1;" />
-    <ui:TreeView />
 </ui:UXML>

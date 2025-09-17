@@ -97,7 +97,8 @@ namespace CityBuilder.Presentation.GamePlay.Presenters
                 }
                 else
                 {
-                    this._view.ShowGhost(dto.GridPosition);
+                    float rotation = this._placementStateModel.PlacementRotationY;
+                    this._view.ShowGhost(dto.GridPosition, rotation);
                     this._view.ShowHighlight(GridView.HighlightType.EmptySpace, dto.GridPosition);
                 }
             }
