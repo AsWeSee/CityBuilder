@@ -4,6 +4,7 @@ using System.Linq;
 using CityBuilder.Domain.Models;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UIElements.Experimental;
 
 namespace CityBuilder.Presentation.UI.View
 {
@@ -25,33 +26,50 @@ namespace CityBuilder.Presentation.UI.View
         private void Awake()
         {
             this._root = this.GetComponent<UIDocument>().rootVisualElement.Q("context-menu-root");
-            Debug.Log($"BuildingContextMenuView Awake - Root found: {this._root != null}");
 
             this._upgradeButton = this._root.Q<Button>("upgrade-button");
             this._moveButton = this._root.Q<Button>("move-button");
             this._deleteButton = this._root.Q<Button>("delete-button");
             
-            Debug.Log($"Buttons found - Upgrade: {this._upgradeButton != null}, Move: {this._moveButton != null}, Delete: {this._deleteButton != null}");
 
-            if (this._upgradeButton != null)
-                this._upgradeButton.clicked += () => OnUpgradeClicked?.Invoke();
+            if (this._upgradeButton != null){
+                this._upgradeButton.clicked += () => {
+                    OnUpgradeClicked?.Invoke();
+                };
+            }
             
             this._upgradeInfo = this._root.Q<VisualElement>("upgrade-info");
             this._upgradeCostLabel = this._root.Q<Label>("upgrade-cost-label");
             this._nextLevelProductionList = this._root.Q<VisualElement>("next-level-production-list");
 
             if (this._moveButton != null)
-                this._moveButton.clicked += () => OnMoveClicked?.Invoke();
+            {
+                this._moveButton.clicked += () => {
+                    OnMoveClicked?.Invoke();
+                };
+            }
             
             if (this._deleteButton != null)
             {
+                // Test if button is clickable by adding multiple event handlers
                 this._deleteButton.clicked += () => 
                 {
-                    Debug.Log("Delete button clicked!");
+                    Debug.Log("BuildingContextMenuView: Delete button clicked! Event fired!");
                     OnDeleteClicked?.Invoke();
                 };
+                
+                // Also test with RegisterCallback to see if it's an event registration issue
+                this._deleteButton.RegisterCallback<ClickEvent>(evt => 
+                {
+                    Debug.Log("BuildingContextMenuView: Delete button ClickEvent registered!");
+                });
+                
+                // Test if button can receive any mouse events
+                this._deleteButton.RegisterCallback<MouseDownEvent>(evt => 
+                {
+                    Debug.Log("BuildingContextMenuView: Delete button MouseDownEvent received!");
+                });
             }
-
             this.Hide(); // Скрываем меню по умолчанию
         }
         public void Show(
@@ -62,6 +80,7 @@ namespace CityBuilder.Presentation.UI.View
         {
             this._root.style.display = DisplayStyle.Flex;
             this.transform.position = worldPosition;
+
 
             // Показываем/скрываем кнопку и информацию об улучшении
             this._upgradeButton.style.display = canUpgrade ? DisplayStyle.Flex : DisplayStyle.None;

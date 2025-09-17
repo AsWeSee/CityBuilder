@@ -38,7 +38,7 @@ namespace CityBuilder.Presentation.Views
         /// </summary>
         public void UpdateResourceAmount(ResourceType type, int amount)
         {
-            Debug.Log($"HudView: UpdateResourceAmount {type} {amount}");
+            // Debug.Log($"HudView: UpdateResourceAmount {type} {amount}");
             string text = $"{amount}";
             switch (type)
             {

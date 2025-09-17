@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="context-menu-root" style="flex-grow: 1; position: absolute;">
-        <ui:Button text="Upgrade" name="upgrade-button" />
-        <ui:Button text="Move" name="move-button" />
-        <ui:Button text="Delete" name="delete-button" />
+    <ui:VisualElement name="context-menu-root" style="flex-grow: 1; position: absolute; background-color: rgba(0, 0, 0, 0.8); padding: 10px; border-radius: 5px;">
+        <ui:Button text="Upgrade" name="upgrade-button" style="margin: 5px; padding: 10px; min-width: 100px;" />
+        <ui:Button text="Move" name="move-button" style="margin: 5px; padding: 10px; min-width: 100px;" />
+        <ui:Button text="Delete" name="delete-button" style="margin: 5px; padding: 10px; min-width: 100px; background-color: rgba(255, 0, 0, 0.3);" />
         <ui:VisualElement name="next-level-production-list" style="flex-grow: 1;" />
     </ui:VisualElement>
 </ui:UXML>

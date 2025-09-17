@@ -566,7 +566,7 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 79b6712e6ded9de488b58af2a6eae012, type: 3}
   m_SortingOrder: 0
   m_Position: 0
-  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceSizeMode: 0
   m_WorldSpaceWidth: 200
   m_WorldSpaceHeight: 100
   m_PivotReferenceSize: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 1c7fe664d4925514399a8f5df365cfeb, type: 3}
   m_SortingOrder: 0
   m_Position: 0
-  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceSizeMode: 0
   m_WorldSpaceWidth: 200
   m_WorldSpaceHeight: 100
   m_PivotReferenceSize: 0
