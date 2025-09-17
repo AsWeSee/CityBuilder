@@ -18,8 +18,8 @@ namespace CityBuilder.Presentation.UI.View
         private void Awake()
         {
             this._root = this.GetComponent<UIDocument>().rootVisualElement.Q("tooltip-root");
-            // this. _buildingNameLabel = this._root.Q<Label>("building-name-label");
-            // this._productionList = this._root.Q("production-list");
+            this. _buildingNameLabel = this._root.Q<Label>("building-name-label");
+            this._productionList = this._root.Q("production-list");
             this.Hide();
         }
 

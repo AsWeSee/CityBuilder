@@ -3,5 +3,6 @@
         <ui:Button text="Upgrade" name="upgrade-button" />
         <ui:Button text="Move" name="move-button" />
         <ui:Button text="Delete" name="delete-button" />
+        <ui:VisualElement name="next-level-production-list" style="flex-grow: 1;" />
     </ui:VisualElement>
 </ui:UXML>

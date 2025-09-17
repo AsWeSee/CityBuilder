@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="tooltip-root" style="flex-grow: 1; position: absolute;" />
-    <ui:Label name="building-name-label" />
-    <ui:VisualElement name="production-list" style="flex-grow: 1;" />
+    <ui:VisualElement name="tooltip-root" style="flex-grow: 1; position: absolute;">
+        <ui:Label name="building-name-label" />
+        <ui:VisualElement name="production-list" style="flex-grow: 1;" />
+    </ui:VisualElement>
 </ui:UXML>

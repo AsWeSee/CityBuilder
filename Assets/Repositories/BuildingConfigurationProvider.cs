@@ -29,9 +29,6 @@ namespace CityBuilder.Repositories
         /// </summary>
         public void Initialize()
         {
-            // Если кэш уже создан, ничего не делаем.
-            if (this._buildingDataCache != null) return;
-
             Debug.Log($"[BuildingConfigurationProvider] Initializing with {this._buildingTypes.Count} building types...");
 
             // Используем LINQ (ToDictionary) для элегантной конвертации списка SO в словарь

@@ -25,3 +25,23 @@ MonoBehaviour:
     - Type: 2
       Amount: 1
     UnitProductionCost: []
+  - BuildCost:
+    - Type: 0
+      Amount: 150
+    Production:
+    - Type: 0
+      Amount: 10
+    Consumption:
+    - Type: 2
+      Amount: 1
+    UnitProductionCost: []
+  - BuildCost:
+    - Type: 0
+      Amount: 150
+    Production:
+    - Type: 0
+      Amount: 10
+    Consumption:
+    - Type: 2
+      Amount: 1
+    UnitProductionCost: []
